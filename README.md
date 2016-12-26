@@ -20,35 +20,34 @@ Appropriately labels the data set with descriptive variable names.
 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 
-#Step-1. Loading the data Only here, then this can be commented and then activated when required to get the raw Data
+##Step-1. Loading the data Only here, then this can be commented and then activated when required to get the raw Data
 
-#Step-2. Reading the files and creating data tables
+##Step-2. Reading the files and creating data tables
 
-#Step-3. Get the data into a Data Frame
+##Step-3. Get the data into a Data Frame
 
 - Training data is handled 
 - Test data is handled
 
-Step-4 is divided into multiple parts as below :
+###Step-4 is divided into multiple parts as below:
+
 - Merges the training and the test sets to create one data set
 - Join All the tables
 - Concatenate All Data by Rows and columns to get the FinalData Df.
 
 
-#Step-5. Extracts only the measurements on the mean and standard deviation for each measurement.
+##Step-5. Extracts only the measurements on the mean and standard deviation for each measurement.
 
--Get the coumns headers found which are having mean() and std() in them, using regex
+- Get the coumns headers found which are having mean() and std() in them, using regex
 
-#Step-6. Uses descriptive activity names to name the activities in the data set
+##Step-6. Uses descriptive activity names to name the activities in the data set
+
 - Get the data from activity_labels.txt
 
+##Step-7. factorize Variable 'activity'
 
+##Step-8.. Appropriately labels the data set with descriptive variable names.
 
-#Step-7. factorize Variable 'activity'
-FinalData$activity<-factor(FinalData$activity);
-FinalData$activity<-factor(FinalData$activity, labels = as.character(activityLabels$V2))
-
-#Step-8.. Appropriately labels the data set with descriptive variable names.
 - To change the feature names to more descriptive
 
 - prefix t is replaced by time
@@ -59,5 +58,6 @@ FinalData$activity<-factor(FinalData$activity, labels = as.character(activityLab
 - BodyBody is replaced by Body
 
 
-#Step-9. From the data set got, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+##Step-9. From the data set got, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
 - Get the whole Df into a tidy.txt , text file
