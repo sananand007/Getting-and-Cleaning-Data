@@ -2,18 +2,22 @@
 
 ##Original (raw) Data from UCI Machine Learning Repository
 
-	Contains Human Activity Recognition database built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors.
+	Contains Human Activity Recognition database built from the recordings 
+	of 30 subjects performing activities of daily living (ADL) while carrying 
+	a waist-mounted smartphone with embedded inertial sensors.
 
-	Original data collected from the smartphones accelerometer and gyroscope 3-axial raw signals, further processed using various signal processing techniques resulting in a measurement vector with 561 features.
-
---source
---description
+	Original data collected from the smartphones accelerometer and gyroscope 
+	3-axial raw signals, further processed using various signal processing techniques 
+	resulting in a measurement vector with 561 features.
+	
+- source
+- description
 
 For detailed description of the original dataset, refer to README.txt and features_info.txt bundeled with the original data set zip archive. The original data set is split into training and test sets where each partition consists of three files that contain
 
--the measurements from the accelerometer and gyroscope
--the labels for activity
--the subject identifiers
+- the measurements from the accelerometer and gyroscope
+- the labels for activity
+- the subject identifiers
 
 #Tidy Data
 
@@ -38,7 +42,7 @@ For each record in the tidy data it is provided:
 	Mean of Triaxial Angular velocity from the gyroscope.
 	numerical value ranging in [-1,1]
 
-#Variables
+#Variables Used in FinalData Df
 
 	timeBodyAccelerometer-mean()-X
 	timeBodyAccelerometer-mean()-Y
