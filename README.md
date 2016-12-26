@@ -19,91 +19,38 @@ Uses descriptive activity names to name the activities in the data set
 Appropriately labels the data set with descriptive variable names.
 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-######################
-@Code work starts here
-######################
+#Step-1. Merges the training and test sets to create one data set
 
+#Step-2. Loading the data Only here, then this can be commented and then activated when required to get the raw Data
 
-#1. Merges the training and test sets to create one data set
+#Step-3. Reading the files and creating data tables
 
-'train/X_train.txt': Training set.
-'test/X_test.txt': Test set.
+#Step-4. Get the data into a Data Frame
 
-library(dplyr)
-library(data.table)
-library(tidyr)
+- Training data is handled 
+- Test data is handled
 
-#2. Loading the data Only here, then this can be commented and then activated when required to get the raw Data
-path<-"C:/Users/sananand/Documents/data/"
-setwd(path)
-if(!file.exists("./project")){dir.create("./project")}
-fileurl<-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-download.file(fileurl, destfile = "./project/UCIHARDataset.zip")
-
--unzip
-unzip(zipfile = "./project/UCIHARDataset.zip", exdir = "./project")
-
-#3. Reading the files and creating data tables
-
-pathNew<-"C:/Users/sananand/Documents/data/project/UCI HAR Dataset"
-
-#4. Get the data into a Data Frame
-
-- Training data
---Subject
-subjectTrain<-tbl_df(read.table(file.path(pathNew, "train", "subject_train.txt")))
---Feature
-XTrain<-tbl_df(read.table(file.path(pathNew, "train", "X_train.txt")))
---Activity
-YTrain<-tbl_df(read.table(file.path(pathNew, "train", "y_train.txt")))
-
-
-- Test data
---Subject
-subjectTest<-tbl_df(read.table(file.path(pathNew, "test", "subject_test.txt")))
---Feature
-XTest<-tbl_df(read.table(file.path(pathNew, "test", "X_test.txt")))
---Activity
-YTest<-tbl_df(read.table(file.path(pathNew, "test", "y_test.txt")))
-
+Step-4 is divided into multiple parts as below :
 1. Merges the training and the test sets to create one data set
-
- Join All the tables
- Concatenate All Data by Rows
-dataSubject <- rbind(subjectTrain,subjectTest)
-dataActivity <- rbind(YTrain,YTest)
-dataFeature <- rbind(XTrain,XTest)
-
--- Names
-names(dataSubject)<-c("subject")
-names(dataActivity)<-c("activity")
-dataFeatureNames <- read.table(file.path(pathNew, "features.txt"), head = FALSE)
-names(dataFeature) <- dataFeatureNames$V2
-
--- FinalData is the final data after all combining
-Combinedata <- cbind(dataSubject,dataActivity)
-FinalData <- cbind(dataFeature,Combinedata)
-
-2. Extracts only the measurements on the mean and standard deviation for each measurement.
-
- Get the coumns headers found which are having mean() and std() in them, using regex
-subFeatureNameList <- dataFeatureNames$V2[grep("mean\\(\\)|std\\(\\)", dataFeatureNames$V2)]
-namesSel <- c(as.character(subFeatureNameList), "subject", "activity" )
-FinalData <- subset(FinalData, select=namesSel)
-
-3. Uses descriptive activity names to name the activities in the data set
-
--- Get the data from activity_labels.txt
-activityLabels <- read.table(file.path(pathNew, "activity_labels.txt"), header = FALSE)
+2. Join All the tables
+3. Concatenate All Data by Rows and columns to get the FinalData Df.
 
 
--- factorize Variable 'activity'
+#Step-5. Extracts only the measurements on the mean and standard deviation for each measurement.
+
+-Get the coumns headers found which are having mean() and std() in them, using regex
+
+#Step-6. Uses descriptive activity names to name the activities in the data set
+- Get the data from activity_labels.txt
+
+
+
+#Step-7. factorize Variable 'activity'
 FinalData$activity<-factor(FinalData$activity);
 FinalData$activity<-factor(FinalData$activity, labels = as.character(activityLabels$V2))
 
-4. Appropriately labels the data set with descriptive variable names.
-
--- To change the feature names to more descriptive
+#Step-8.. Appropriately labels the data set with descriptive variable names.
+- To change the feature names to more descriptive
 
 - prefix t  is replaced by  time
 - Acc is replaced by Accelerometer
@@ -112,16 +59,6 @@ FinalData$activity<-factor(FinalData$activity, labels = as.character(activityLab
 - Mag is replaced by Magnitude
 - BodyBody is replaced by Body
 
-names(FinalData)<-gsub("^t", "time", names(FinalData))
-names(FinalData)<-gsub("^f", "frequency", names(FinalData))
-names(FinalData)<-gsub("Acc", "Accelerometer", names(FinalData))
-names(FinalData)<-gsub("Gyro", "Gyroscope", names(FinalData))
-names(FinalData)<-gsub("Mag", "Magnitude", names(FinalData))
-names(FinalData)<-gsub("BodyBody", "Body", names(FinalData))
 
-5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-
-library(plyr)
-FinalData_new<-aggregate(. ~subject + activity, FinalData, mean)
-FinalData_new<-FinalData_new[order(FinalData_new$subject,FinalData_new$activity),]
-write.table(FinalData_new, file = "tidydata.txt",row.name=FALSE)
+#Step-9. From the data set got, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+- Get the whole Df into a tidy.txt , text file
