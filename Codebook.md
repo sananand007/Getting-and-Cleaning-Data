@@ -2,12 +2,13 @@
 
 ##Original (raw) Data from UCI Machine Learning Repository
 
-Contains Human Activity Recognition database built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors.
+	Contains Human Activity Recognition database built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors.
 
-Original data collected from the smartphones accelerometer and gyroscope 3-axial raw signals, further processed using various signal processing techniques resulting in a measurement vector with 561 features.
+	Original data collected from the smartphones accelerometer and gyroscope 3-axial raw signals, further processed using various signal processing techniques resulting in a measurement vector with 561 features.
 
--source
--description
+--source
+--description
+
 For detailed description of the original dataset, refer to README.txt and features_info.txt bundeled with the original data set zip archive. The original data set is split into training and test sets where each partition consists of three files that contain
 
 -the measurements from the accelerometer and gyroscope
@@ -16,19 +17,21 @@ For detailed description of the original dataset, refer to README.txt and featur
 
 #Tidy Data
 
-Contains aggregated mean values of all mean and standard deviation values from original data set grouped by activity and subject, resulting in a total of 180 records.
+	Contains aggregated mean values of all mean and standard deviation values from original data set grouped by activity and subject, resulting in a total of 180 records.
 
 ##Attribute Information:
 
 For each record in the tidy data it is provided:
 
-Its activity label (one out of 6 different activities):
--LAYING
--SITTING
--STANDING
--WALKING
--WALKING_DOWNSTAIR
--WALKING_UPSTAIRS
+###Its activity label (one out of 6 different activities):
+
+1. LAYING
+2. SITTING
+3. STANDING
+4. WALKING
+5. WALKING_DOWNSTAIR
+6. WALKING_UPSTAIRS
+
 	An identifier of the subject who carried out the experiment (30 different subjects, IDs ranging from {1,2,3,...,30})
 	79 features with the
 	Mean of Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
