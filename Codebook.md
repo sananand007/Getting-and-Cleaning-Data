@@ -21,7 +21,9 @@ For detailed description of the original dataset, refer to README.txt and featur
 
 #Tidy Data
 
-	Contains aggregated mean values of all mean and standard deviation values from original data set grouped by activity and subject, resulting in a total of 180 records.
+	Contains aggregated mean values of all mean and standard deviation 
+	values from original data set grouped by activity and subject, resulting 
+	in a total of 180 records.
 
 ##Attribute Information:
 
